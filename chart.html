@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<meta charset="UTF-8">
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Student progress"
+	},
+	axisY:{
+		includeZero: false
+	},
+	data: [{        
+		type: "line",       
+		dataPoints: [
+			{ y: 80 },
+			{ y: 85},
+			{ y: 90, indexLabel: "highest",markerColor: "red", markerType: "triangle" },
+			{ y: 75 },
+			{ y: 20 },
+			{ y: 25 },
+			{ y: 10 },
+			{ y: 15 },
+			{ y: 0 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+			{ y: 55 },
+			{ y: 89 },
+			{ y: 2 }
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+
+
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script src="canvasjs.min.js"></script>
+</body>
+</html>
