@@ -13,39 +13,38 @@
   </style>
 
   <script>
-	window.onload = function () {
+  window.onload = function () {
 
-	var chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		theme: "light2",
-		title:{
-			text: "Test graph"
-		},
-		axisY:{
-			includeZero: false
-		},
-		data: [{        
-			type: "line",       
-			dataPoints: [
-				{ y: 80 },
-				{ y: 85},
-				{ y: 90, indexLabel: "highest",markerColor: "red", markerType: "triangle" },
-				{ y: 75 },
-				{ y: 20 },
-				{ y: 25 },
-				{ y: 10 },
-				{ y: 15 },
-				{ y: 0 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
-				{ y: 55 },
-				{ y: 89 },
-				{ y: 2 }
-			]
-		}]
-	});
-	chart.render();
+  var chart = new CanvasJS.Chart("chartContainer", {
+    animationEnabled: true,
+    theme: "light2", // "light1", "light2", "dark1", "dark2"
+    title:{
+      text: "Class performance"
+    },
+    axisY: {
+      title: "Number of students"
+    },
+    data: [{        
+      type: "column",  
+      showInLegend: true, 
+      legendMarkerColor: "white",
+      legendText: "Grade",
+      dataPoints: [      
+        { y: 2, label: "A" },
+        { y: 8,  label: "B" },
+        { y: 9,  label: "C" },
+        { y: 8,  label: "D" },
+        { y: 3,  label: "F" }
+      ]
+    }]
+  });
+  chart.render();
 
-	}
-	</script>
+  }
+  </script>
+
+
+
   </head>
 
 
