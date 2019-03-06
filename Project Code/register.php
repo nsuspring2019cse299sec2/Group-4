@@ -25,7 +25,7 @@
 
         
 
-        <form action="" method="post">
+        <form action="confirmRegister.php" method="post">
           <div class="field">
           <label class="label">Email:</label>
           <div class="control">
