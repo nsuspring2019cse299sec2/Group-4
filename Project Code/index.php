@@ -24,7 +24,7 @@
         <hr>
 
         
-        <form action="" method="post">
+        <form action="confirmLogin.php" method="post">
         <div class="field">
 		  <label class="label">Email</label>
 		  <div class="control">
@@ -47,7 +47,7 @@
         
         
         <hr>
-        <p>Not a user yet? <a href="register.html"><u>Sign up here</u></a>
+        <p>Not a user yet? <a href="register.php"><u>Sign up here</u></a>
         </div>
         </div>
       </div>
