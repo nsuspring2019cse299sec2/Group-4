@@ -1,7 +1,7 @@
 .navbar {
-	padding-left: 80px;
-	padding-right: 80px;
+	padding: 10px 80px;
 	font-weight: bold;
+	background-color: #38383B;
 }
 
 .navbar-logo {
@@ -17,4 +17,65 @@
 	padding: 0px 20px;
 	font-weight: inherit;
 	padding-bottom: 4px;
+}
+
+
+.bodySection {
+	background-color: #38383B;
+}
+
+.homeSection {
+	padding: 40px 80px;
+}
+
+.introText {
+	margin: auto;
+}
+
+.introText h2 {
+	color: white;
+    font-family: Metropolis;
+    font-size: 43px;
+    margin-bottom: 25px;
+}
+
+.introText p {
+	font-family: arial;
+    color: #B9B9B9;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.introImg {
+	text-align: center;
+}
+
+.read {
+    background-color: #737373;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    padding: 13px 25px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.start {
+    background-color: #7289DA;
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    padding: 13px 25px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-left: 12px;
+}
+
+.img1 {
+	max-width: 500px;
+}
+
+@media screen and (min-width: 1000px) {
+	
 }
