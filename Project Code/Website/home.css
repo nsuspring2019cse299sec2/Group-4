@@ -138,6 +138,29 @@
 }
 
 
+.endSection {
+	padding: 40px 80px;
+	text-align: center;
+}
+
+.endSection h2 {
+	color: white;
+    font-family: Metropolis;
+    font-size: 43px;
+    margin-bottom: 25px;
+}
+
+
+.endSection h3 {
+	color: white;
+    font-family: Metropolis;
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+
 @media screen and (min-width: 1000px) {
 	
 }
