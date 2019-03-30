@@ -27,6 +27,13 @@
                Error. Please try again.
               </div>";
         }
+
+        if(isset($_GET["success"]))
+        {
+          echo "<div class='notification is-success'>
+               Successfully registered.
+              </div>";
+        }
         ?>
 
         <p><b>CSE 299</b></p>
@@ -70,7 +77,7 @@
         
         
         <hr>
-        <p>Not a user yet? <a href="register.php"><u>Sign up here</u></a>
+        <p>Not a user yet? <a href="register.php?usr_type=1"><u>Sign up here</u></a>
         </div>
         </div>
       </div>
