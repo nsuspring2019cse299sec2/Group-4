@@ -51,51 +51,34 @@
 
     <div class="container">
       <?php
-      session_start();
-      $email = $_SESSION['email'];
-      $usr_id = $_SESSION['usr_id'];
-      ?>
+        if(isset($_GET["error"]))
+        {
+          echo "<div class='notification is-warning'>
+               Error. Please try again.
+              </div>";
+        }
+
+        if(isset($_GET["success"]))
+        {
+          echo "<div class='notification is-success'>
+               Class successfully added.
+              </div>";
+        }
+        ?>
       
-    	<p><b>Welcome, <?php echo $email; ?>!</b></p>
-    	<hr>
-      <p>Your classes: </p><br>
-    	
-
-      <?php
-
-      $conn = mysqli_connect('localhost','root','','cse_299');
-
-
-      $sql = "
-          SELECT *
-          FROM class
-          WHERE tid = $usr_id";
-
-      $result = mysqli_query($conn, $sql);
-
-
-      echo "<table class='table is-fullwidth is-striped is-bordered'>
-          <tr>
-            <th>Name</th>
-            <th>Date Created</th>
-            <th>Access Code</th>
-          </tr>";
-      while ($row = mysqli_fetch_assoc($result))
-      {
-        echo "<tr>
-            <td>" . $row['name'] . "</td>" .
-            "<td>" . $row['date'] . "</td>" .
-            "<td>" . $row['code'] . "</td>" .
-            "</tr>" ;
-      }
-
-
-      echo "</table>";
-      ?>
-
-
-		  <br>
-      <a class="button is-primary" href="class.php">Add new class</a>
+      <form action="class2.php" method="post">
+          <div class="field">
+          <label class="label">Enter class name:</label>
+          <div class="control">
+          <input class="input" name="cname" type="text" placeholder="e.g. CSE 299">
+          </div>
+          </div>
+          <div class="field is-grouped">
+          <div class="control">
+          <button class="button is-success" type="submit">Submit</button>
+          </div>
+          </div>
+      </form>
 
 
   	</div>
