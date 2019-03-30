@@ -33,7 +33,7 @@ if($usr_type=='Teacher')
 		}
 
 
-		header("Location: chart.php");
+		header("Location: landing.php");
 
 
 	}
