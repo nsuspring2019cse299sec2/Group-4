@@ -100,7 +100,42 @@ session_start()
 
 
 		  <br>
-      <a class="button is-primary" href="class.php">Add new class</a>
+      <a class="button is-primary" href="class.php">Add new class</a><br><br>
+
+      <p>New requests: </p>
+      <?php
+
+      $conn = mysqli_connect('localhost','root','','cse_299');
+
+
+      $sql = "
+          SELECT c.name AS cname, s.email AS semail, e.ID as ID, s.sid AS sid, c.cid AS cid
+          FROM enrolled e, class c, s_users s
+          WHERE c.tid = '$usr_id' AND e.cid=c.cid AND e.accepted=0 AND s.sid=e.sid";
+
+      $result = mysqli_query($conn, $sql);
+
+
+      echo "<table class='table is-fullwidth is-striped is-bordered'>
+          <tr>
+            <th>Class name</th>
+            <th>Email</th>
+            <th>ID</th>
+            <th></th>
+          </tr>";
+      while ($row = mysqli_fetch_assoc($result))
+      {
+        echo "<tr>
+            <td>" . $row['cname'] . "</td>" .
+            "<td>" . $row['semail'] . "</td>" .
+            "<td>" . $row['ID'] . "</td>" .
+            "<td><a href='accept_student.php?sid=" . $row['sid']. "&cid=". $row['cid'] ."'><u>Accept</u></a></td>" .
+            "</tr>" ;
+      }
+
+
+      echo "</table>";
+      ?>
 
 
   	</div>

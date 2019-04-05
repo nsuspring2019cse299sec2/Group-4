@@ -42,7 +42,7 @@ session_start()
         </div>
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active" href="landing_student.php">Home</a>
+            <a class="navbar-item is-active" href="landing.php">Home</a>
             <a class="navbar-item" href="index.php">Logout</a>
           </div>
         </div>
@@ -54,49 +54,42 @@ session_start()
   <div class="hero-body">
 
     <div class="container">
+      
       <?php
+        if(isset($_GET["error"]))
+        {
+          echo "<div class='notification is-warning'>
+               Error. Please try again.
+              </div>";
+        }
+
+        if(isset($_GET["success"]))
+        {
+          echo "<div class='notification is-success'>
+               Class successfully joined.
+              </div>";
+        }
+        ?>
       
-      $email = $_SESSION['email'];
-      $usr_id = $_SESSION['usr_id'];
-      
-      ?>
-      
-    	<p><b>Welcome,<?php echo $email; ?>!</b></p>
-    	
-      <?php
-
-      $conn = mysqli_connect('localhost','root','','cse_299');
-
-
-      $sql = "
-          SELECT *
-          FROM enrolled e, class c
-          WHERE e.sid = '$usr_id' AND e.cid=c.cid AND e.accepted=1";
-
-      $result = mysqli_query($conn, $sql);
-
-
-      echo "<table class='table is-fullwidth is-striped is-bordered'>
-          <tr>
-            <th>Name</th>
-            <th>Date Created</th>
-          </tr>";
-      while ($row = mysqli_fetch_assoc($result))
-      {
-        echo "<tr>
-            <td>" . $row['name'] . "</td>" .
-            "<td>" . $row['date'] . "</td>" .
-            "</tr>" ;
-      }
-
-
-      echo "</table>";
-      ?>
-
-
-		  <br>
-      <a class="button is-primary" href="join_class.php">Join new class</a>
-
+      <form action="join_class2.php" method="post">
+          <div class="field">
+          <label class="label">Enter class code:</label>
+          <div class="control">
+          <input class="input" name="ccode" type="text" placeholder="e.g. cX23vR">
+          </div>
+          </div>
+          <div class="field">
+          <label class="label">Enter ID:</label>
+          <div class="control">
+          <input class="input" name="ID" type="text" placeholder="e.g. 163256648">
+          </div>
+          </div>
+          <div class="field is-grouped">
+          <div class="control">
+          <button class="button is-success" type="submit">Submit</button>
+          </div>
+          </div>
+      </form>
 
   	</div>
 
