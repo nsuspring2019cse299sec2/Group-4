@@ -1,0 +1,321 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Quizer Monkey</title>
+	<style type="text/css">
+		/*body {
+			margin: 0px;
+		}
+
+		.navbar {
+			width: 100%;
+			height: 60px;
+			background-color: #38383B;
+			
+		}
+
+		.nav {
+		  padding: 0px 150px;
+		}
+
+		.brandName {
+			/*flex: 60%;*/
+			/*color: white;
+			float: left;
+		/*}
+
+		.brandName img {
+			height: 38px;
+			margin-top: 10px;
+		}
+
+		.brandName span {
+			position: relative;
+		    top: -9px;
+		    left: 6px;
+		    font-size: 18px;
+		    font-family: Arial;
+		    font-weight: 700;
+		}
+
+		.navLinks {
+			/*flex: 40%;*/
+			/*float: right;
+		    margin-top: 14px;
+		    font-size: 15px;
+		    font-family: Arial;
+		}
+
+		/*.navLinks div {
+			display: inline;
+			color: #B9B9B9;
+			margin-right: 30px;
+		}
+
+		.navLinks div a {
+			color: #B9B9B9;
+			text-decoration: none;
+		}
+
+		.navLinks div a:hover {
+			color: #ffffff;
+			text-decoration: none;
+		}
+
+		.navLinks div button {
+			display: inline;
+		    color: #B9B9B9;
+		    margin-right: 0px;
+		    border: 2px solid #B9B9B9;
+		    border-radius: 20px;
+		    background-color: #38383B;
+		    padding: 7px 20px;
+		    font-size: inherit;
+		    font-family: inherit;
+		}
+
+		.navLinks div button:hover {
+			cursor: pointer;
+			color: #38383B;
+			background-color: #B9B9B9;
+			font-weight: 200; 
+		}
+
+		.body_container {
+			padding: 107px 150px;
+			background-color: #38383B;
+		}
+
+		.home_section {
+			display: flex;
+			align-items: center;
+		}
+
+		.left_side {
+			flex: 50%;
+		}
+
+		.left_side h2 {
+			color: white;
+		    font-family: Metropolis;
+		    font-size: 43px;
+		    margin-bottom: 25px;
+		}
+
+	    .left_side p {
+			font-family: arial;
+		    color: #B9B9B9;
+		    font-size: 14px;
+		    font-weight: bold;
+		    margin-bottom: 25px;
+		}
+
+		.left_side button:hover {
+			cursor: pointer;
+		}
+
+		.read {
+		    background-color: #737373;
+		    border: 0px;
+		    border-radius: 5px;
+		    color: white;
+		    padding: 13px 25px;
+		    font-weight: bold;
+		    font-size: 15px;
+		}
+
+		.start {
+		    background-color: #7289DA;
+		    border: 0px;
+		    border-radius: 5px;
+		    color: white;
+		    padding: 13px 25px;
+		    font-weight: bold;
+		    font-size: 15px;
+		    margin-left: 12px;
+		}
+
+		.right_side {
+			flex: 50%;
+			text-align: center;
+		}
+
+		.right_side img {
+			height: 550px;
+		}*/
+	</style>
+</head> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Quizer Monkey</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="home.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<!-- <div class="navbar">
+		<div class="nav">
+			<div class="brandName">
+				<img src="logo.svg">
+				<span>Quizer Monkey</span>
+			</div>
+			<div class="navLinks">
+				<div>
+					<a href="#">Home</a> 
+				</div>
+				<div>
+					<a href="#">Pricing</a> 
+				</div>
+				<div>
+					<a href="#">Features</a> 
+				</div>
+				<div>
+					<button>Login</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="body_container">
+		<div class="home_section">
+			<div class="left_side">
+				<h2>It's time to make quizzes simpler to take!</h2>
+				<p>
+					A place where you can take quizzes of your group of peope in the most interactive way as possible. 
+					
+				   	Don't worry about where you or your people are. Just make the quiz happen!
+				</p>
+				<button class="read">Read more</button>
+				<button class="start">Get started</button>
+			</div>
+			<div class="right_side">
+				<img src="home_icon.svg">
+			</div>
+		</div>
+	</div> -->
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top">
+	  	<!-- Brand/logo -->
+	  	<a class="navbar-brand" href="#home">
+	    	<img src="logo.svg" alt="logo" class="navbar-logo" style="width:40px;"> Quizer Monkey
+	  	</a>
+
+
+	 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="collapsibleNavbar"> 
+		  	<!-- Links -->
+		  	<ul class="navbar-nav ml-auto">
+		    	<li class="nav-item">
+		      		<a class="nav-link" href="#home">Home</a>
+		    	</li>
+			    <li class="nav-item">
+			      <a class="nav-link" href="#feature1">About</a>
+			    </li>
+			    <li class="nav-item">
+			      <a class="nav-link" href="#feature2">Features</a>
+			    </li>
+			    <li class="nav-item">
+			      <a class="nav-link" href="index.php"><button class="loginButton">Login</button></a>
+			    </li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container-fluid bodySection" style="color: black; padding-top: 70px">
+		<div class="row homeSection" id="home">
+			<div class="col-md-7 introText">
+				<h2>It's time to make quizzes simpler to take!</h2>
+				<p>
+					A place where you can take quizzes of your group of peope in the most interactive way as possible. 
+					
+				   	Don't worry about where you or your people are. Just make the quiz happen!
+				</p>
+				<button class="read">Read more</button>
+				<button class="start">Get started</button>
+			</div>
+			<div class="col-md-5 introImg">
+				<img src="home_icon.svg" class="img1">
+			</div>
+		</div>
+
+
+		<div class="row featureSection1" id="feature1">
+			<div class="col-md-6 featureImg1">
+				<img src="features_icon.svg" class="img1">
+			</div>
+			<div class="col-md-6 featureText1">
+				<h2>Our Crazy Features</h2>
+				<p>
+					The platform is dedicated to make the life of quiz for the teachers and as well
+					as the student easier and simpler. It gives some of the key features which solve
+					many problems!
+				</p>
+				<p>
+					- The quiz can be taken from anywhere of the world, by the teacher
+					  as well as by the students.
+				</p>
+				<p>
+					- Specific timeline for the quiz can be specified as well as specific
+						time limit can be set up for each question papers.
+				</p>
+				<p>
+					- The quiz app will give access the teachers to create multiple types
+						of questions, such as short questions, essays, fill in the blanks
+						and many more!
+				</p>
+			</div>
+		</div>
+
+
+		<div class="row featureSection2" id="feature2">
+			<div class="col-md-6 featureText2">
+				<h2>More Features</h2>
+				<p>
+					The platform not only focuses on the quizes and exams but also keeps an eye
+					on the growth of the student's skills and knowledge!
+				</p>
+				<p>
+					- The teachers will be able to upload practise questions.
+				</p>
+				<p>
+					- Students can access practise questions provided by the teachers
+						any time they want and will also be able to see peer solutions.
+				</p>
+				<p>
+					- The students will be able to see there daily quiz growth with the
+						help of graphs.
+				</p>
+				<p>
+					- The students will be able to see their previous quiz questions and
+						also their ansers so that they can learn from their mistakes.
+				</p>
+			</div>
+			<div class="col-md-6 featureImg2">
+				<img src="more_features_icon.svg" class="img1">
+			</div>
+		</div>
+
+
+		<div class="endSection">
+			<img src="logo.svg" style="max-width: 150px; margin-bottom: 25px">
+			<h3>It's time to change the world of quiz.</h3>
+			<h3>Are you ready for it?</h3>
+		</div>
+	</div>
+	
+	<div class="footer" style="padding: 15px 80px">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-4">&copy; Copyright 2019</div>
+				<div class="col-sm-4" style="text-align: center;">Developed by - Afif &#x26; Sohel</div>
+				<div class="col-sm-4" style="text-align: right;">Contact Us</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

@@ -1,4 +1,8 @@
+<?php
 
+session_start()
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +43,7 @@
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item is-active" href="landing.php">Home</a>
-            <a class="navbar-item" href="logout.php">Logout</a>
+            <a class="navbar-item" href="index.php">Logout</a>
           </div>
         </div>
       </div>
@@ -51,12 +55,13 @@
 
     <div class="container">
       <?php
-      session_start();
+      
       $email = $_SESSION['email'];
       $usr_id = $_SESSION['usr_id'];
+      
       ?>
       
-    	<p><b>Welcome, <?php echo $email; ?>!</b></p>
+    	<p><b>Welcome,<?php echo $email; ?>!</b></p>
     	<hr>
       <p>Your classes: </p><br>
     	
@@ -69,7 +74,7 @@
       $sql = "
           SELECT *
           FROM class
-          WHERE tid = $usr_id";
+          WHERE tid = '$usr_id'";
 
       $result = mysqli_query($conn, $sql);
 
