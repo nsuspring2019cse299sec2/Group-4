@@ -66,7 +66,7 @@ else
 		}
 
 
-		echo "Logged in successfully.";
+		header("Location: landing_student.php");
 
 
 	}
