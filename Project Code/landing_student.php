@@ -42,7 +42,7 @@ session_start()
         </div>
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active" href="landing.php">Home</a>
+            <a class="navbar-item is-active" href="landing_student.php">Home</a>
             <a class="navbar-item" href="index.php">Logout</a>
           </div>
         </div>
@@ -62,10 +62,7 @@ session_start()
       ?>
       
     	<p><b>Welcome,<?php echo $email; ?>!</b></p>
-    	<hr>
-      <p>Your classes: </p><br>
     	
-
       <?php
 
       $conn = mysqli_connect('localhost','root','','cse_299');
@@ -73,8 +70,8 @@ session_start()
 
       $sql = "
           SELECT *
-          FROM class
-          WHERE tid = '$usr_id'";
+          FROM enrolled e, class c
+          WHERE e.sid = '$usr_id' AND e.cid=c.cid AND e.accepted=1";
 
       $result = mysqli_query($conn, $sql);
 
@@ -83,14 +80,12 @@ session_start()
           <tr>
             <th>Name</th>
             <th>Date Created</th>
-            <th>Access Code</th>
           </tr>";
       while ($row = mysqli_fetch_assoc($result))
       {
         echo "<tr>
             <td>" . $row['name'] . "</td>" .
             "<td>" . $row['date'] . "</td>" .
-            "<td>" . $row['code'] . "</td>" .
             "</tr>" ;
       }
 
@@ -100,42 +95,7 @@ session_start()
 
 
 		  <br>
-      <a class="button is-primary" href="class.php">Add new class</a><br><br>
-
-      <p>New requests: </p>
-      <?php
-
-      $conn = mysqli_connect('localhost','root','','cse_299');
-
-
-      $sql = "
-          SELECT c.name AS cname, s.email AS semail, e.ID as ID, s.sid AS sid, c.cid AS cid
-          FROM enrolled e, class c, s_users s
-          WHERE c.tid = '$usr_id' AND e.cid=c.cid AND e.accepted=0 AND s.sid=e.sid";
-
-      $result = mysqli_query($conn, $sql);
-
-
-      echo "<table class='table is-fullwidth is-striped is-bordered'>
-          <tr>
-            <th>Class name</th>
-            <th>Email</th>
-            <th>ID</th>
-            <th></th>
-          </tr>";
-      while ($row = mysqli_fetch_assoc($result))
-      {
-        echo "<tr>
-            <td>" . $row['cname'] . "</td>" .
-            "<td>" . $row['semail'] . "</td>" .
-            "<td>" . $row['ID'] . "</td>" .
-            "<td><a href='accept_student.php?sid=" . $row['sid']. "&cid=". $row['cid'] ."'><u>Accept</u></a></td>" .
-            "</tr>" ;
-      }
-
-
-      echo "</table>";
-      ?>
+      <a class="button is-primary" href="join_class.php">Join new class</a>
 
 
   	</div>
