@@ -43,7 +43,7 @@ session_start()
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
             <a class="navbar-item is-active" href="landing_student.php">Home</a>
-            <a class="navbar-item" href="index.php">Logout</a>
+            <a class="navbar-item" href="logout.php">Logout</a>
           </div>
         </div>
       </div>
