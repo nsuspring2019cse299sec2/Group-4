@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+$name=-10;
 $email = -10;
 $pass = -10;
 $pass2 = -10;
@@ -13,7 +14,7 @@ if(isset($_GET["usr_type"])) $usr_type= $_GET["usr_type"];
 if($usr_type==2)
 {
   
-
+	
   	$email = $_POST['email'];
 	$pass = $_POST['password'];
 	$pass2 = $_POST['password2'];
@@ -22,6 +23,7 @@ if($usr_type==2)
 
   	if($pass!=$pass2) $flag=1;
 	//echo $flag;
+	if($name==-10) $flag=1;
 	if($email==-10) $flag=1;
 	//echo $flag;
 	if($pass==-10) $flag=1;
@@ -67,7 +69,7 @@ if($usr_type==2)
 if($usr_type==3)
 
 
-
+$name = $_POST['name'];
 $email = $_POST['email'];
 $pass = $_POST['password'];
 $pass2 = $_POST['password2'];
@@ -107,13 +109,17 @@ if($rowcount!=0) $flag=1;
 
 
 if($flag==0) {
-	$sql = "INSERT INTO s_users VALUES(NULL,'$email','$pass','$age','$institution')";
+	$sql = "INSERT INTO s_users VALUES(NULL,'$name','$email','$pass','$age','$institution')";
 	if(mysqli_query($conn, $sql)) 
 		{
 			$_SESSION['register'] = 1;
 			header("Location: index.php?success=1");
 		}
-	else echo "Error";
+	else 
+	{
+		header("Location: register.php?error=1");
+		exit;
+	}
 }
 else 
 {

@@ -54,27 +54,46 @@ session_start()
   <div class="hero-body">
 
     <div class="container">
-      <?php
-      
-      $email = $_SESSION['email'];
-      $usr_id = $_SESSION['usr_id'];
-      
-      ?>
-      
-    	<p><b>Welcome, <?php echo $email; ?>!</b></p>
-    	<hr>
-      <p>Your classes: </p><br>
-    	
 
-      <?php
+      
+      <?php 
+
+
+      if($_GET["cid"])
+      {
+        $cid = $_GET['cid'];
+      }
 
       require "connection.php";
-
 
       $sql = "
           SELECT *
           FROM class
-          WHERE tid = '$usr_id'";
+          WHERE cid = '$cid'";
+
+      $result = mysqli_query($conn, $sql);
+
+      while ($row = mysqli_fetch_assoc($result))
+      {
+        echo "<p>Welcome to your class <b>" . $row['name'] . "</b>!</p><br>";
+      }
+
+      
+      ?>
+
+      <p>Quizzes in this class: </p><br>
+
+      <a class="button is-primary" href="quiz.php?cid=<?php echo $cid ?>">Add new quiz</a><br><br>
+
+      <p>Students enrolled in this class: </p><br>
+
+      <?php 
+
+      $sql = "
+          SELECT *
+          FROM enrolled e, s_users s
+          WHERE e.cid = '$cid' and s.sid=e.sid";
+
 
       $result = mysqli_query($conn, $sql);
 
@@ -82,63 +101,22 @@ session_start()
       echo "<table class='table is-fullwidth is-striped is-bordered'>
           <tr>
             <th>Name</th>
-            <th>Date Created</th>
-            <th>Access Code</th>
-            <th></th>
+            <th>Email</th>
+            <th>Institution</th>
           </tr>";
       while ($row = mysqli_fetch_assoc($result))
       {
         echo "<tr>
             <td>" . $row['name'] . "</td>" .
-            "<td>" . $row['date'] . "</td>" .
-            "<td>" . $row['code'] . "</td>" .
-            "<td>" . "<a href='manage_class.php?cid=" . $row['cid'] . "'><u>Manage class</u></a>" . "</td>" .
+            "<td>" . $row['email'] . "</td>" .
+            "<td>" . $row['institute'] . "</td>" .
             "</tr>" ;
       }
 
 
       echo "</table>";
+
       ?>
-
-
-		  <br>
-      <a class="button is-primary" href="class.php">Add new class</a><br><br>
-
-      <p>New requests: </p><br>
-      <?php
-
-      require "connection.php";
-
-
-      $sql = "
-          SELECT c.name AS cname, s.email AS semail, e.ID as ID, s.sid AS sid, c.cid AS cid
-          FROM enrolled e, class c, s_users s
-          WHERE c.tid = '$usr_id' AND e.cid=c.cid AND e.accepted=0 AND s.sid=e.sid";
-
-      $result = mysqli_query($conn, $sql);
-
-
-      echo "<table class='table is-fullwidth is-striped is-bordered'>
-          <tr>
-            <th>Class name</th>
-            <th>Email</th>
-            <th>ID</th>
-            <th></th>
-          </tr>";
-      while ($row = mysqli_fetch_assoc($result))
-      {
-        echo "<tr>
-            <td>" . $row['cname'] . "</td>" .
-            "<td>" . $row['semail'] . "</td>" .
-            "<td>" . $row['ID'] . "</td>" .
-            "<td><a href='accept_student.php?sid=" . $row['sid']. "&cid=". $row['cid'] ."'><u>Accept</u></a></td>" .
-            "</tr>" ;
-      }
-
-
-      echo "</table>";
-      ?>
-
 
   	</div>
 
