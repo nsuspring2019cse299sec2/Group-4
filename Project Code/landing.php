@@ -68,7 +68,7 @@ session_start()
 
       <?php
 
-      $conn = mysqli_connect('localhost','root','','cse_299');
+      require "connection.php";
 
 
       $sql = "
@@ -105,7 +105,7 @@ session_start()
       <p>New requests: </p>
       <?php
 
-      $conn = mysqli_connect('localhost','root','','cse_299');
+      require "connection.php";
 
 
       $sql = "

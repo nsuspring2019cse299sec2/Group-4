@@ -39,7 +39,7 @@ if($usr_type==2)
 	}
 
 
-	$conn = mysqli_connect('localhost','root','','cse_299');
+	require "connection.php";
 	$sql = "SELECT * FROM t_users WHERE email = '$email' AND pass = '$pass'";
 	$result = mysqli_query($conn,$sql);
 
@@ -97,7 +97,8 @@ if($flag==1)
 
 
 
-$conn = mysqli_connect('localhost','root','','cse_299');
+
+require "connection.php";
 $sql = "SELECT * FROM s_users WHERE email = '$email' AND pass = '$pass'";
 $result = mysqli_query($conn,$sql);
 
@@ -117,6 +118,7 @@ if($flag==0) {
 else 
 {
 	header("Location: register.php?error=1");
+	exit;
 }
 
 ?>

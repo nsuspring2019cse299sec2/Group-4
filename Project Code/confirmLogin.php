@@ -10,6 +10,7 @@ require "connection.php";
 
 if (!$conn) {
     header("Location: index.php?error=1");
+    exit;
 }
 
 if($usr_type=='Teacher')
@@ -35,6 +36,7 @@ if($usr_type=='Teacher')
 
 
 		header("Location: landing.php");
+		exit;
 
 
 	}
@@ -42,6 +44,7 @@ if($usr_type=='Teacher')
 	else 
 
 		header("Location: index.php?error=1");
+		exit;
 
 }
 
@@ -68,6 +71,7 @@ else
 
 
 		header("Location: landing_student.php");
+		exit;
 
 
 	}
@@ -75,6 +79,7 @@ else
 	else 
 
 		header("Location: index.php?error=1");
+		exit;
 }
 
 

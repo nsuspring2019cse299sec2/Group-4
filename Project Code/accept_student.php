@@ -1,6 +1,6 @@
 <?php
 
-$conn = mysqli_connect('localhost','root','','cse_299');
+require "connection.php";
 
 if($_GET["sid"])
 {
@@ -21,7 +21,8 @@ mysqli_query($conn, $sql);
 
 
 
-header("Location: landing.php");	
+header("Location: landing.php");
+exit;	
 
 
 
