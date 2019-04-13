@@ -5,7 +5,8 @@ $email = $_POST['email'];
 $pass = $_POST['password'];
 $usr_type = $_POST['usr_type'];
 
-$conn = mysqli_connect('localhost','root','','cse_299');
+//$conn = mysqli_connect('localhost','root','','cse_299');
+require "connection.php";
 
 if (!$conn) {
     header("Location: index.php?error=1");
