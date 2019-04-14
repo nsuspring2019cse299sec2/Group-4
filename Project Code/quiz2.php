@@ -45,7 +45,7 @@ if($flag==0)
       {
         if($row['qid']>$qid) $qid = $row['qid'];
       }
-    header("Location: quiz3.php?cid='$cid'&qid='$qid'");
+    header("Location: quiz3.php?cid=". $cid . "&qid=" .$qid);
     exit;
   }
   else 
