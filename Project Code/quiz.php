@@ -1,6 +1,10 @@
 <?php
 
-session_start()
+session_start();
+if($_GET["cid"])
+      {
+        $cid = $_GET['cid'];
+      }
 
 ?>
 
@@ -42,7 +46,7 @@ session_start()
         </div>
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active" href="landing_student.php">Home</a>
+            <a class="navbar-item is-active" href="landing.php">Home</a>
             <a class="navbar-item" href="logout.php">Logout</a>
           </div>
         </div>
@@ -54,42 +58,48 @@ session_start()
   <div class="hero-body">
 
     <div class="container">
-      
+
       <?php
-        if(isset($_GET["error"]))
+
+      if(isset($_GET["error"]))
         {
           echo "<div class='notification is-warning'>
                Error. Please try again.
-              </div>";
+              </div>
+              ";
         }
 
-        if(isset($_GET["success"]))
-        {
-          echo "<div class='notification is-success'>
-               Class successfully joined.
-              </div>";
-        }
         ?>
       
-      <form action="join_class2.php" method="post">
-          <div class="field">
-          <label class="label">Enter class code:</label>
-          <div class="control">
-          <input class="input" name="ccode" type="text" placeholder="e.g. cX23vR">
+      <form action='quiz2.php?cid=<?php echo $cid ?>' method='post'>
+          <div class='field'>
+          <label class='label'>Quiz name:</label>
+          <div class='control'>
+            <input class='input' name='name' type='text' placeholder='e.g. Quiz#1'>
           </div>
           </div>
-          <div class="field">
-          <label class="label">Enter ID:</label>
-          <div class="control">
-          <input class="input" name="ID" type="text" placeholder="e.g. 163256648">
+          <div class='field'>
+          <label class='label'>Number of questions:</label>
+          <div class='control'>
+            <input class='input' name='quesno' type='text' placeholder='e.g. 12'>
           </div>
           </div>
-          <div class="field is-grouped">
-          <div class="control">
-          <button class="button is-success" type="submit">Submit</button>
+          <div class='field'>
+          <label class='label'>Time (minutes):</label>
+          <div class='control'>
+            <input class='input' name='time' type='text' placeholder='45'>
           </div>
           </div>
-      </form>
+          
+          
+        
+        <br>
+        <div class='field is-grouped'>
+          <div class='control'>
+            <button class='button is-success' type='submit'>Submit</button>
+          </div>
+        </div>
+        </form>
 
   	</div>
 

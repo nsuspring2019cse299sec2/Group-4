@@ -7,7 +7,7 @@ $ccode = $_POST['ccode'];
 $ID = $_POST['ID'];
 
 
-$conn = mysqli_connect('localhost','root','','cse_299');
+require "connection.php";
 if($conn) {
 	$sql = "
 		SELECT *

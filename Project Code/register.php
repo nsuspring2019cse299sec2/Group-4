@@ -93,6 +93,12 @@
           echo "
           <form action='confirmRegister.php?usr_type=3' method='post'>
           <div class='field'>
+          <label class='label'>Name:</label>
+          <div class='control'>
+            <input class='input' name='name' type='text' placeholder='e.g.Sohel Rahman'>
+          </div>
+          </div>
+          <div class='field'>
           <label class='label'>Email:</label>
           <div class='control'>
             <input class='input' name='email' type='text' placeholder='email@gmail.com'>

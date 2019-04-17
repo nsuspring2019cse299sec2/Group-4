@@ -12,7 +12,7 @@ echo $cname . "<br>";
 echo $today . "<br>";
 echo $random;*/
 
-$conn = mysqli_connect('localhost','root','','cse_299');
+require "connection.php";
 if($conn) {
 	$sql = "INSERT INTO class VALUES(NULL,'$tid','$cname','$today','$random');";
 	mysqli_query($conn, $sql);
