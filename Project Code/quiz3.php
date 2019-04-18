@@ -76,13 +76,13 @@ if($_GET["qid"])
       {
         echo "
 
-        <form action='quiz4.php?cid=<?php echo $cid . "&qid=". $qid ?>' method='post'>
+        <form action='quiz4.php?cid=<?php echo $cid=". $cid . "&qid=". $qid . "' method='post'>
           
 
           <div class='field'>
           <label class='label'>Question #" . $currques . "</label>
           <div class='control'>
-            <input class='input' name='quescontent' type='text' placeholder=''>
+            <input class='input is-large' name='quescontent' type='text' placeholder=''>
           </div>
           </div>
           <div class='field'>
@@ -109,7 +109,17 @@ if($_GET["qid"])
             <input class='input' name='opcontent_4' type='text' placeholder=''>
           </div>
           </div>
-          
+          <br>
+          <label class='label'>Correct option: </label>
+          <div class='select'>
+          <select name='op_correct'>
+           <option value = '1'> 1 </option>
+           <option value = '2'> 2 </option>
+           <option value = '3'> 3 </option>
+           <option value = '4'> 4 </option>
+          </select>
+          </div>
+          <br>
           
         
         
