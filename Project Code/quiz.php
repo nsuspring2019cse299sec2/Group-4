@@ -6,6 +6,9 @@ if($_GET["cid"])
         $cid = $_GET['cid'];
       }
 
+
+$_SESSION['cid'] = $cid;
+
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +74,7 @@ if($_GET["cid"])
 
         ?>
       
-      <form action='quiz2.php?cid=<?php echo $cid ?>' method='post'>
+      <form action='quiz2.php' method='post'>
           <div class='field'>
           <label class='label'>Quiz name:</label>
           <div class='control'>

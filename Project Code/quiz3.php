@@ -3,16 +3,10 @@
 session_start();
 $quesno = $_SESSION['quesno'];
 $currques = $_SESSION['currques'];
+$cid = $_SESSION['cid'];
+$qid = $_SESSION['qid'];
 
-if($_GET["cid"])
-      {
-        $cid = $_GET['cid'];
-      }
 
-if($_GET["qid"])
-      {
-        $qid = $_GET['qid'];
-      }
 ?>
 
 <!DOCTYPE html>
@@ -65,6 +59,14 @@ if($_GET["qid"])
 
     <div class="container">
       <?php
+
+      if(isset($_GET["error"]))
+        {
+          echo "<div class='notification is-warning'>
+               Error. Please try again.
+              </div>
+              ";
+        }
       
       if($currques>($quesno))
       {
@@ -76,7 +78,7 @@ if($_GET["qid"])
       {
         echo "
 
-        <form action='quiz4.php?cid=<?php echo $cid=". $cid . "&qid=". $qid . "' method='post'>
+        <form action='quiz4.php' method='post'>
           
 
           <div class='field'>
