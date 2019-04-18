@@ -78,10 +78,39 @@ session_start()
         echo "<p>Welcome to your class <b>" . $row['name'] . "</b>!</p><br>";
       }
 
-      
-      ?>
+      $sql = "
+          SELECT *
+          FROM quiz
+          WHERE cid = '$cid'";
+
+      $result = mysqli_query($conn, $sql);
+
+      echo "
 
       <p>Quizzes in this class: </p><br>
+
+      ";
+
+      echo "<table class='table is-fullwidth is-striped is-bordered'>
+          <tr>
+            <th>Name</th>
+            <th>Number of questions</th>
+            <th>Time</th>
+          </tr>";
+      while ($row = mysqli_fetch_assoc($result))
+      {
+        echo "<tr>
+            <td>" . $row['name'] . "</td>" .
+            "<td>" . $row['quesno'] . "</td>" .
+            "<td>" . $row['time'] . "</td>" .
+            "</tr>" ;
+      }
+
+
+      echo "</table>";
+      ?>
+
+      
 
       <a class="button is-primary" href="quiz.php?cid=<?php echo $cid ?>">Add new quiz</a><br><br>
 
