@@ -1,3 +1,20 @@
+<?php
+
+session_start();
+$quesno = $_SESSION['quesno'];
+$currques = $_SESSION['currques'];
+
+if($_GET["cid"])
+      {
+        $cid = $_GET['cid'];
+      }
+
+if($_GET["qid"])
+      {
+        $qid = $_GET['qid'];
+      }
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,7 +35,6 @@
 
 
 <body>
-
 
   <section class="hero is-danger">
   <div class="hero-head">
@@ -48,25 +64,54 @@
   <div class="hero-body">
 
     <div class="container">
-
+      <?php
       
-      <form action='quiz3.php?cid=<?php echo $cid . "&qid=". $qid ?>' method='post'>
+      if($currques>($quesno))
+      {
+        echo "<div class='notification is-success'>
+               Quiz successfully created.
+              </div>";
+      }
+      else
+      {
+        echo "
+
+        <form action='quiz4.php?cid=<?php echo $cid . "&qid=". $qid ?>' method='post'>
           
 
           <div class='field'>
-          <label class='label'>Quiz name:</label>
+          <label class='label'>Question #" . $currques . "</label>
           <div class='control'>
-            <input class='input' name='name' type='text' placeholder='e.g. Quiz#1'>
+            <input class='input' name='quescontent' type='text' placeholder=''>
           </div>
           </div>
           <div class='field'>
-          <label class='label'>Number of questions:</label>
+          <label class='label'>Option 1:</label>
           <div class='control'>
-            <input class='input' name='quesno' type='text' placeholder='e.g. 12'>
+            <input class='input' name='opcontent_1' type='text' placeholder=''>
+          </div>
+          </div>
+          <div class='field'>
+          <label class='label'>Option 2:</label>
+          <div class='control'>
+            <input class='input' name='opcontent_2' type='text' placeholder=''>
+          </div>
+          </div>
+          <div class='field'>
+          <label class='label'>Option 3:</label>
+          <div class='control'>
+            <input class='input' name='opcontent_3' type='text' placeholder=''>
+          </div>
+          </div>
+          <div class='field'>
+          <label class='label'>Option 4:</label>
+          <div class='control'>
+            <input class='input' name='opcontent_4' type='text' placeholder=''>
+          </div>
           </div>
           
           
-          
+        
         
         <br>
         <div class='field is-grouped'>
@@ -76,6 +121,16 @@
         </div>
         </form>
 
+        ";
+        
+      }
+      
+
+
+
+        ?>
+
+        
   	</div>
 
 
