@@ -97,7 +97,7 @@ session_start()
           <tr>
             <th>Name</th>
             <th>Number of questions</th>
-            <th>Time</th>
+            <th>Time(in minutes)</th>
             <th></th>
           </tr>";
       while ($row = mysqli_fetch_assoc($result))
