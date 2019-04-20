@@ -54,6 +54,26 @@ session_start()
   <div class="hero-body">
 
     <div class="container">
+      <p>Time left: </p>
+      <script>
+      function countDown(secs,elem) {
+        var element = document.getElementById(elem);
+        
+        var second = secs % 60;
+
+        var minute = (secs - second) / 60;
+
+        element.innerHTML = minute + " : " + second;
+        if(secs < 1) {
+          clearTimeout(timer);
+          document.quiz.submit();
+        }
+        secs--;
+        var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
+      }
+      </script>
+      <div id="status"></div><br>
+
       <?php
       
       $email = $_SESSION['email'];
@@ -78,10 +98,13 @@ session_start()
       {
         $quesno = $row['quesno'];
         $time = $row['time'];
+        $time *= 60; //converts time to seconds
         $quizname = $row['name'];
       }
 
       echo "<p><b><u>" . $quizname . "</u></b></p><br>";
+
+
 
       $sql = "
           SELECT *
@@ -90,7 +113,9 @@ session_start()
 
       $result1 = mysqli_query($conn, $sql);
 
-      echo "<form action='take_quiz2.php?qid=" . $qid . "' method='post'>";
+      
+
+      echo "<form name = 'quiz' action='take_quiz2.php?qid=" . $qid . "' method='post' onsubmit='return validate()'>";
 
       while ($row1 = mysqli_fetch_assoc($result1))
       {
@@ -132,6 +157,9 @@ session_start()
             </div>
             </div>
             </form>";
+
+
+      echo "<script>countDown('$time' ,'status')</script>"
 
       ?>
       

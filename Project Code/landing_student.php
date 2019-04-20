@@ -100,6 +100,40 @@ session_start()
 		  <br>
       <a class="button is-primary" href="join_class.php">Join new class</a>
 
+      <br><br><br><p>Your grade history: </p><br>
+
+      <?php
+
+      require "connection.php";
+
+
+      $sql = "
+          SELECT c.name AS classname, q.name AS quizname, m.number AS quizmarks
+          FROM enrolled e, class c, marks m, quiz q
+          WHERE e.sid = '$usr_id' AND e.cid=c.cid AND e.accepted=1 AND m.cid=e.cid AND m.qid = q.qid AND m.sid = '$usr_id'";
+
+      $result = mysqli_query($conn, $sql);
+
+
+      echo "<table class='table is-fullwidth is-striped is-bordered'>
+          <tr>
+            <th>Class</th>
+            <th>Quiz</th>
+            <th>Marks</th>
+          </tr>";
+      while ($row = mysqli_fetch_assoc($result))
+      {
+        echo "<tr>
+            <td>" . $row['classname'] . "</td>" .
+            "<td>" . $row['quizname'] . "</td>" .
+            "<td>" . $row['quizmarks'] .  "</td>" .
+            "</tr>" ;
+      }
+
+
+      echo "</table>";
+      ?>
+
 
   	</div>
 

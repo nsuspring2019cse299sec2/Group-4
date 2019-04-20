@@ -67,6 +67,8 @@ if($number>0)
 
 	$sql = "INSERT INTO marks VALUES('$cid','$qid','$usr_id','$mark')";
 	mysqli_query($conn, $sql);
+
+	header("Location: landing_student.php");
 }
 
 ?>
