@@ -61,9 +61,9 @@ session_start()
     <?php 
 
 
-      if($_GET["qid"])
+      if($_GET["sid"])
       {
-        $qid = $_GET['qid'];
+        $sid = $_GET['sid'];
       }
 
       $cid = $_SESSION['cid'];
@@ -111,7 +111,7 @@ session_start()
           animationEnabled: true,
           theme: "light2", // "light1", "light2", "dark1", "dark2"
           title:{
-            text: "Quiz results"
+            text: "Student progress"
           },
           axisY: {
             title: "Mark"
@@ -120,7 +120,7 @@ session_start()
             type: "column",  
             showInLegend: true, 
             legendMarkerColor: "white",
-            legendText: "Name of student",
+            legendText: "Quiz name",
             dataPoints: [    
             <?php  
 
@@ -128,16 +128,16 @@ session_start()
 
 
             $sql = "
-                SELECT q.name AS quizname, m.number AS mark, s.name AS studentname, s.email AS studentemail
+                SELECT q.name AS quizname, m.number AS mark, s.name AS studentname
                 FROM s_users s, marks m, quiz q
-                WHERE m.qid = '$qid' AND m.qid = q.qid AND m.sid = s.sid AND m.cid = '$cid'";
+                WHERE m.cid = '$cid' AND m.sid = '$sid' AND m.cid = q.cid AND m.sid = s.sid AND m.qid = q.qid";
 
             $result = mysqli_query($conn, $sql);
 
             while ($row = mysqli_fetch_assoc($result))
             {
-              echo "{ y: " . $row['mark'] . ", label: '" . $row['studentname'] . "'},";
-              $temp = $row['quizname'];
+              echo "{ y: " . $row['mark'] . ", label: '" . $row['quizname'] . "'},";
+              $temp = $row['studentname'];
             }
 
 
@@ -156,7 +156,7 @@ session_start()
         }
         </script>
 
-        <?php  echo "<br><p><center>Showing results of " . $temp . "</center></p>"?>
+        <?php echo "<br><p><center>Showing progress of student " . $temp . "</center></p>"; ?>
 
   	</div>
 

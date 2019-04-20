@@ -139,6 +139,7 @@ session_start()
             <th>Name</th>
             <th>Email</th>
             <th>Institution</th>
+            <th></th>
           </tr>";
       while ($row = mysqli_fetch_assoc($result))
       {
@@ -146,6 +147,7 @@ session_start()
             <td>" . $row['name'] . "</td>" .
             "<td>" . $row['email'] . "</td>" .
             "<td>" . $row['institute'] . "</td>" .
+            "<td>" . "<a href='teacher_studentprogress.php?sid=" . $row['sid'] . "'><u>View progress</u></a>" . "</td>" .
             "</tr>" ;
       }
 

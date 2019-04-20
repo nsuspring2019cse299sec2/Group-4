@@ -22,13 +22,13 @@
       text: "Class performance"
     },
     axisY: {
-      title: "Number of students"
+      title: "Mark"
     },
     data: [{        
       type: "column",  
       showInLegend: true, 
       legendMarkerColor: "white",
-      legendText: "Grade",
+      legendText: "Name of student",
       dataPoints: [      
         { y: 2, label: "A" },
         { y: 8,  label: "B" },
