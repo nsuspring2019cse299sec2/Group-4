@@ -90,7 +90,7 @@ session_start()
 
       $result1 = mysqli_query($conn, $sql);
 
-      echo "<form action='take_quiz2.php' method='post'>";
+      echo "<form action='take_quiz2.php?qid=" . $qid . "' method='post'>";
 
       while ($row1 = mysqli_fetch_assoc($result1))
       {

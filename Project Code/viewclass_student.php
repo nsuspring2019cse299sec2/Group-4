@@ -125,7 +125,7 @@ session_start()
         {
           echo "<td>" . "<a href='take_quiz.php?qid=" . $row['qid'] . "'><u>Take quiz</u></a></td>" ;
         }
-        else echo "Quiz taken";
+        else echo "<td>Quiz taken</td>";
 
             
         echo "</tr>" ;
