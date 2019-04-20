@@ -56,12 +56,14 @@ if($usr_type==2)
 			{
 				$_SESSION['register'] = 1;
 				header("Location: index.php?success=1");
+				exit;
 			}
 		else echo "Error";
 	}
 	else 
 	{
 		header("Location: register.php?error=1");
+		exit;
 	}
 
 }
