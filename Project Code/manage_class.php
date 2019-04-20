@@ -64,6 +64,8 @@ session_start()
         $cid = $_GET['cid'];
       }
 
+      $_SESSION['cid'] = $cid;
+
       require "connection.php";
 
       $sql = "
@@ -96,6 +98,7 @@ session_start()
             <th>Name</th>
             <th>Number of questions</th>
             <th>Time</th>
+            <th></th>
           </tr>";
       while ($row = mysqli_fetch_assoc($result))
       {
@@ -103,6 +106,7 @@ session_start()
             <td>" . $row['name'] . "</td>" .
             "<td>" . $row['quesno'] . "</td>" .
             "<td>" . $row['time'] . "</td>" .
+            "<td>" . "<a href='teacher_quizresult.php?qid=" . $row['qid'] . "'><u>View quiz grades</u></a>" . "</td>" .
             "</tr>" ;
       }
 
@@ -113,6 +117,9 @@ session_start()
       
 
       <a class="button is-primary" href="quiz.php?cid=<?php echo $cid ?>">Add new quiz</a><br><br>
+
+      
+      <a class="button is-primary" href="teacher_classresult.php">View class grades</a><br><br>
 
       <p>Students enrolled in this class: </p><br>
 
