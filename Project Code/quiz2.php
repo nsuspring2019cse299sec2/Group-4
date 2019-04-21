@@ -2,11 +2,7 @@
 
 session_start();
 
-if($_GET["cid"])
-      {
-        $cid = $_GET['cid'];
-      }
-
+$cid = $_SESSION['cid'];
 
 $name=-10;
 $quesno = -10;
@@ -45,8 +41,13 @@ if($flag==0)
       {
         if($row['qid']>$qid) $qid = $row['qid'];
       }
-    header("Location: quiz3.php?cid=". $cid . "&qid=" .$qid);
-    exit;
+
+  $_SESSION['quesno'] = $quesno;
+  $_SESSION['currques'] = 1;
+  $_SESSION['qid'] = $qid;
+
+  header("Location: quiz3.php");
+  exit;
   }
   else 
   {

@@ -42,7 +42,7 @@ session_start()
         </div>
         <div id="navbarMenuHeroB" class="navbar-menu">
           <div class="navbar-end">
-            <a class="navbar-item is-active" href="landing.php">Home</a>
+            <a class="navbar-item is-active" href="landing_student.php">Home</a>
             <a class="navbar-item" href="logout.php">Logout</a>
           </div>
         </div>
@@ -54,9 +54,10 @@ session_start()
   <div class="hero-body">
 
     <div class="container">
-
+      <?php
       
-      <?php 
+      $email = $_SESSION['email'];
+      $usr_id = $_SESSION['usr_id'];
 
 
       if($_GET["cid"])
@@ -80,6 +81,9 @@ session_start()
         echo "<p>Welcome to your class <b>" . $row['name'] . "</b>!</p><br>";
       }
 
+
+
+
       $sql = "
           SELECT *
           FROM quiz
@@ -97,64 +101,44 @@ session_start()
           <tr>
             <th>Name</th>
             <th>Number of questions</th>
-            <th>Time(in minutes)</th>
+            <th>Time</th>
             <th></th>
           </tr>";
       while ($row = mysqli_fetch_assoc($result))
       {
+        $temp = $row['qid'];
+        $sql = "
+          SELECT *
+          FROM marks
+          WHERE qid = '$temp' AND cid = '$cid' AND sid = '$usr_id'";
+
+        $result2 = mysqli_query($conn, $sql);
+
+        $rowcount = mysqli_num_rows($result2);
+
         echo "<tr>
             <td>" . $row['name'] . "</td>" .
             "<td>" . $row['quesno'] . "</td>" .
-            "<td>" . $row['time'] . "</td>" .
-            "<td>" . "<a href='teacher_quizresult.php?qid=" . $row['qid'] . "'><u>View quiz grades</u></a>" . "</td>" .
-            "</tr>" ;
+            "<td>" . $row['time'] . "</td>";
+
+        if($rowcount==0)
+        {
+          echo "<td>" . "<a href='take_quiz.php?qid=" . $row['qid'] . "'><u>Take quiz</u></a></td>" ;
+        }
+        else echo "<td>Quiz taken</td>";
+
+            
+        echo "</tr>" ;
+        
       }
 
 
       echo "</table>";
-      ?>
-
       
-
-      <a class="button is-primary" href="quiz.php?cid=<?php echo $cid ?>">Add new quiz</a><br><br>
-
-      
-      <a class="button is-primary" href="teacher_classresult.php">View class grades</a><br><br>
-
-      <p>Students enrolled in this class: </p><br>
-
-      <?php 
-
-      $sql = "
-          SELECT *
-          FROM enrolled e, s_users s
-          WHERE e.cid = '$cid' and s.sid=e.sid";
-
-
-      $result = mysqli_query($conn, $sql);
-
-
-      echo "<table class='table is-fullwidth is-striped is-bordered'>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Institution</th>
-            <th></th>
-          </tr>";
-      while ($row = mysqli_fetch_assoc($result))
-      {
-        echo "<tr>
-            <td>" . $row['name'] . "</td>" .
-            "<td>" . $row['email'] . "</td>" .
-            "<td>" . $row['institute'] . "</td>" .
-            "<td>" . "<a href='teacher_studentprogress.php?sid=" . $row['sid'] . "'><u>View progress</u></a>" . "</td>" .
-            "</tr>" ;
-      }
-
-
-      echo "</table>";
-
       ?>
+      
+    	
+
 
   	</div>
 

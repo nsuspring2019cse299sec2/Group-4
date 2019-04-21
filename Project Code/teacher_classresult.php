@@ -1,13 +1,6 @@
 <?php
 
-session_start();
-if($_GET["cid"])
-      {
-        $cid = $_GET['cid'];
-      }
-
-
-$_SESSION['cid'] = $cid;
+session_start()
 
 ?>
 
@@ -62,52 +55,52 @@ $_SESSION['cid'] = $cid;
 
     <div class="container">
 
-      <?php
-
-      if(isset($_GET["error"]))
-        {
-          echo "<div class='notification is-warning'>
-               Error. Please try again.
-              </div>
-              ";
-        }
-
-        ?>
-      
-      <form action='quiz2.php' method='post'>
-          <div class='field'>
-          <label class='label'>Quiz name:</label>
-          <div class='control'>
-            <input class='input' name='name' type='text' placeholder='e.g. Quiz#1'>
-          </div>
-          </div>
-          <div class='field'>
-          <label class='label'>Number of questions:</label>
-          <div class='control'>
-            <input class='input' name='quesno' type='text' placeholder='e.g. 12'>
-          </div>
-          </div>
-          <div class='field'>
-          <label class='label'>Time (minutes):</label>
-          <div class='control'>
-            <input class='input' name='time' type='text' placeholder='45'>
-          </div>
-          </div>
-          
-          
-        
-        <br>
-        <div class='field is-grouped'>
-          <div class='control'>
-            <button class='button is-success' type='submit'>Submit</button>
-          </div>
-        </div>
-        </form>
-
-  	</div>
+    <?php 
 
 
-	</div>
+      $cid = $_SESSION['cid'];
+
+      require "connection.php";
+
+
+      $sql = "
+          SELECT q.name AS quizname, m.number AS mark, s.name AS studentname, s.email AS studentemail
+          FROM s_users s, marks m, quiz q
+          WHERE m.cid = '$cid' AND m.qid = q.qid AND m.sid = s.sid ";
+
+      $result = mysqli_query($conn, $sql);
+
+      echo "
+
+      <p>Showing grades for this class: </p><br>
+
+      ";
+
+      echo "<table class='table is-fullwidth is-striped is-bordered'>
+          <tr>
+            <th>Quiz name</th>
+            <th>Student name</th>
+            <th>Email</th>
+            <th>Mark</th>
+          </tr>";
+      while ($row = mysqli_fetch_assoc($result))
+      {
+        echo "<tr>
+            <td>" . $row['quizname'] . "</td>" .
+            "<td>" . $row['studentname'] . "</td>" .
+            "<td>" . $row['studentemail'] . "</td>" .
+            "<td>" . $row['mark'] . "</td>" .
+            "</tr>" ;
+      }
+
+
+      echo "</table>";
+      ?>  
+
+    </div>
+
+
+  </div>
 
       
 

@@ -104,6 +104,7 @@ session_start()
 		  <br>
       <a class="button is-primary" href="class.php">Add new class</a><br><br>
 
+
       <p>New requests: </p><br>
       <?php
 
